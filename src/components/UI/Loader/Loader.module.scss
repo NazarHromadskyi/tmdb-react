@@ -1,0 +1,55 @@
+@import "src/scss/mixin";
+@import "src/scss/variables";
+
+.loader {
+  position: relative;
+  @include flex(center, center);
+  @include fullscreen;
+
+  .ring {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    animation: ring 2s linear infinite;
+
+    &::before {
+      position: absolute;
+      content: '';
+      left: 0;
+      top: 0;
+      height: 100%;
+      width: 100%;
+      border-radius: 50%;
+      box-shadow: 0 0 5px rgba(255, 255, 255, .3);
+    }
+  }
+
+  span {
+    text-transform: uppercase;
+    font-size: 20px;
+    letter-spacing: 1px;
+    animation: text 3s ease-in-out infinite;
+  }
+}
+
+@keyframes ring {
+  0% {
+    transform: rotate(0deg);
+    box-shadow: 1px 5px 2px $main-red;
+  }
+  50% {
+    transform: rotate(180deg);
+    box-shadow: 1px 5px 2px $white;
+  }
+  100% {
+    transform: rotate(360deg);
+    box-shadow: 1px 5px 2px $main-red;
+  }
+}
+
+@keyframes text {
+  50% {
+    color: transparent;
+  }
+}

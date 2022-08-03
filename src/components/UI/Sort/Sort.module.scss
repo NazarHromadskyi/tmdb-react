@@ -1,0 +1,99 @@
+@import "src/scss/mixin";
+@import "src/scss/variables";
+
+.wrapper {
+  position: relative;
+
+  .sort {
+    position: relative;
+    @include select-disable();
+
+    .label {
+      font-size: 20px;
+      display: flex;
+      align-items: center;
+
+      b {
+        margin-right: 10px;
+      }
+
+      span {
+        color: $main-red;
+        border-bottom: 1px dashed $main-red;
+        cursor: pointer;
+      }
+    }
+
+    .dropdown {
+      border: 1px solid $main-red;
+      border-radius: $border-radius;
+      background-color: $body-bg;
+      padding: 10px;
+      position: absolute;
+      z-index: 90;
+      right: 0;
+      margin-top: 15px;
+      overflow: hidden;
+      min-width: 160px;
+
+      ul {
+        overflow: hidden;
+
+        li {
+          padding: 12px 20px;
+          cursor: pointer;
+
+          &.active,
+          &:hover {
+            background: $gray;
+          }
+
+          &.active {
+            font-weight: bold;
+            color: $main-red;
+          }
+        }
+      }
+    }
+
+
+    &.notAllow {
+      pointer-events: none;
+      color: gray;
+      opacity: 0.4;
+    }
+  }
+
+  .info {
+    position: absolute;
+    background-color: cornflowerblue;
+    left: 103%;
+    top: -40%;
+    border-radius: 50%;
+    padding: 10px;
+    @include flex(center, center);
+    height: 10px;
+    width: 10px;
+    cursor: pointer;
+    z-index: 100;
+    @include select-disable();
+
+    &.show {
+      .message {
+        position: absolute;
+        background-color: $body-bg;
+        border-radius: $border-radius;
+        padding: 10px;
+        top: 95%;
+        right: 120%;
+        width: 300px;
+
+        p {
+
+        }
+      }
+    }
+  }
+}
+
+

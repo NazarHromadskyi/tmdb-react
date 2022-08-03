@@ -1,0 +1,22 @@
+@import "./src/scss/variables";
+
+.card {
+  img {
+    height: 295px;
+    width: 197px;
+    border-radius: $border-radius;
+  }
+
+  &__text {
+    margin-top: 5px;
+
+    &__name {
+      font-weight: bold;
+    }
+
+    &__character {
+      font-style: italic;
+    }
+  }
+
+}

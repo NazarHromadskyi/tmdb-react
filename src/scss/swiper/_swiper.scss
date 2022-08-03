@@ -1,0 +1,60 @@
+@import "./src/scss/variables";
+@import "./src/scss/mixin";
+
+.swiper {
+  padding-bottom: 20px;
+  cursor: grab;
+  @include select-disable();
+
+  &:hover {
+    .swiper-scrollbar {
+      background: rgba(128, 128, 128, 0.49);
+
+      &-drag {
+        background: $white;
+      }
+    }
+  }
+
+  .swiper-scrollbar {
+    border-radius: 10px;
+    position: relative;
+    -ms-touch-action: none;
+    background: transparent;
+    transition: height 0.1s ease, background-color 0.1s ease;
+
+    .swiper-scrollbar-disabled > &,
+    &.swiper-scrollbar-disabled {
+      display: none !important;
+    }
+
+    .swiper-horizontal > &,
+    &.swiper-scrollbar-horizontal {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      z-index: 50;
+      height: 5px;
+      width: 100%;
+    }
+  }
+
+  .swiper-scrollbar-drag {
+    height: 100%;
+    width: 100%;
+    position: relative;
+    border-radius: 10px;
+    left: 0;
+    top: 0;
+    background: transparent;
+    transition: height 0.1s ease, background-color 0.1s ease;
+  }
+
+  .swiper-scrollbar-cursor-drag {
+    cursor: move;
+  }
+
+  .swiper-scrollbar-lock {
+    display: none;
+  }
+}

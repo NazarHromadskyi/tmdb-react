@@ -1,0 +1,6 @@
+@import "src/scss/mixin";
+
+.banner {
+  height: 50vh;
+  @include darken();
+}

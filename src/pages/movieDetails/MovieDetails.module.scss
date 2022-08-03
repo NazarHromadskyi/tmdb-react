@@ -1,0 +1,111 @@
+@import "./src/scss/mixin";
+@import "/src/scss/variables";
+
+.root {
+
+  .banner {
+    height: 50vh;
+    @include darken();
+  }
+
+  .content {
+    max-width: 1260px;
+    margin-left: auto;
+    margin-right: auto;
+
+    .info {
+      @include flex(flex-start, flex-start);
+      position: relative;
+      margin-top: -230px;
+      //padding: 0 2rem;
+
+      &__left {
+        flex: 1;
+
+        .poster {
+
+          img {
+            height: 450px;
+            width: 300px;
+            border-radius: $border-radius;
+          }
+        }
+
+        .trailerBtn {
+          width: 300px;
+          margin-top: 10px;
+
+          button {
+            width: 100%;
+            font-size: 15px;
+          }
+        }
+
+        .ratingBar {
+          width: 300px;
+          text-align: center;
+          margin-top: 10px;
+          padding: 0 15px;
+        }
+
+      }
+
+      &__right {
+        width: 72%;
+
+        .fields {
+          margin-top: 20px;
+        }
+
+
+        .title {
+          font-size: 40px;
+        }
+
+        .tagline {
+          font-style: italic;
+        }
+
+        .genres {
+          display: flex;
+          margin-top: 15px;
+
+          & * {
+            margin-right: 5px;
+          }
+        }
+
+        .overview {
+          margin-top: 30px;
+
+          &__text {
+            margin-top: 7px;
+          }
+        }
+      }
+    }
+
+    &__trailer {
+      margin-top: 70px;
+
+      h2 {
+        font-weight: bold;
+        color: $main-red;
+        margin-bottom: 30px;
+      }
+    }
+
+    &__recommendations {
+      margin-top: 70px;
+
+      h2 {
+        margin-bottom: 30px;
+      }
+    }
+
+    .fieldTitle {
+      font-weight: bold;
+      color: $main-red;
+    }
+  }
+}

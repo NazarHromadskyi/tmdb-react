@@ -1,0 +1,16 @@
+@import "src/scss/variables";
+
+.image {
+  border-radius: $border-radius;
+  min-height: 278px;
+  min-width: 175px;
+
+  img {
+    height: 278px;
+    width: 175px;
+  }
+
+  .filterWhite {
+    filter: invert(100%) sepia(24%) saturate(5615%) hue-rotate(292deg) brightness(131%) contrast(111%);
+  }
+}

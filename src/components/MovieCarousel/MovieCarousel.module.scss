@@ -1,0 +1,23 @@
+@import "./src/scss/variables";
+
+.carousel {
+  padding: 30px 50px;
+
+  .swiper-scrollbar-drag {
+    background: white;
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 25px;
+
+    button {
+      text-transform: none;
+      padding: 5px 15px;
+      font-size: 1em;
+    }
+  }
+}

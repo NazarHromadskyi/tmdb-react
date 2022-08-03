@@ -1,0 +1,55 @@
+@import "./src/scss/mixin";
+@import "./src/scss/variables";
+
+.header {
+  height: $header-height;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 99;
+  transition: height 0.5s ease, background-color 0.5s ease;
+
+  &__wrapper {
+    @include flex(center, space-between);
+    @include container();
+    height: 100%;
+    padding: 0 2rem;
+
+    .logo {
+      font-size: 30px;
+      font-weight: 600;
+      letter-spacing: $logo-letter-spacing;
+
+      a {
+        @include flex(center, unset);
+
+        img {
+          margin-right: 10px;
+          width: 50px;
+        }
+
+        &:hover {
+          color: $white;
+        }
+      }
+    }
+  }
+
+  &__nav {
+    @include flex(center, unset);
+
+    & > * ~ * {
+      margin-left: 2rem;
+    }
+
+    li {
+      padding: 5px 0;
+      font-weight: 700;
+      position: relative;
+      font-size: 20px;
+
+      @include underscore;
+    }
+  }
+}

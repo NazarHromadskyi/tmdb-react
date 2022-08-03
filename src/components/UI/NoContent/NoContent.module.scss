@@ -1,0 +1,8 @@
+@import "src/scss/mixin";
+
+.noContent {
+  @include flex(center, center);
+  @include fullscreen;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}

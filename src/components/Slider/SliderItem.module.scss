@@ -1,0 +1,73 @@
+@import "./src/scss/variables";
+@import "./src/scss/mixin";
+
+.sliderItem {
+  padding: 145px 0;
+  width: 100%;
+  height: 100vh;
+  @include darken();
+
+  .content {
+    @include flex(center, center);
+    @include container();
+    position: relative;
+
+    .info {
+      width: 75%;
+      padding: 0 3rem;
+      position: relative;
+
+      .description {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .title {
+        font-size: 45px;
+        font-weight: 700;
+        line-height: 1;
+        margin-bottom: 30px;
+      }
+
+      .overview {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 450px;
+
+        .genres {
+          display: flex;
+          margin-top: 15px;
+
+          & > * ~ * {
+            margin-left: 5px;
+          }
+        }
+
+        .top {
+          font-weight: 600;
+          font-size: 20px;
+          margin-right: 65px;
+        }
+
+        .bottom {
+          button {
+            padding: 7px 20px;
+            font-size: 20px;
+          }
+        }
+      }
+    }
+
+    .poster {
+      position: relative;
+
+      img {
+        height: 450px;
+        width: 300px;
+        border-radius: $border-radius;
+        box-shadow: $box-shadow;
+      }
+    }
+  }
+}

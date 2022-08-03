@@ -1,0 +1,41 @@
+@import "src/scss/variables";
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  li {
+    display: flex;
+
+    a {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-right: 10px;
+      padding: 10px;
+      border: 1px solid $white;
+      border-radius: $border-radius;
+      min-width: 45px;
+      height: 45px;
+      cursor: pointer;
+      transition: 0.1s ease-in-out;
+      font-weight: bold;
+      color: $white;
+
+      &:hover {
+        background-color: $main-red;
+        color: #fff;
+      }
+    }
+  }
+
+  :global {
+    .selected {
+      a {
+        background-color: $white;
+        color: $main-red;
+      }
+    }
+  }
+}

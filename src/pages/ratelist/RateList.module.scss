@@ -1,0 +1,41 @@
+@import "./src/scss/mixin";
+@import "./src/scss/variables";
+
+.watchlist {
+  @include fullscreen;
+
+  .items {
+    position: relative;
+    margin-top: -230px;
+
+    .panel {
+      @include flex(center, space-between);
+      max-width: 1260px;
+      margin: auto auto 50px;
+
+      .links {
+        background-color: $gray;
+        @include flex(center, space-between);
+        width: 230px;
+        height: 50px;
+        padding: 10px 20px;
+
+        .delimiter {
+          border: 1px solid white;
+          height: 100%;
+        }
+
+        span {
+          font-size: 20px;
+          @include underscore;
+          position: relative;
+          padding-bottom: 5px;
+
+          &:hover {
+            color: $main-red;
+          }
+        }
+      }
+    }
+  }
+}

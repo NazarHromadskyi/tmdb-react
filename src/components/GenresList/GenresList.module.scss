@@ -1,0 +1,79 @@
+@import "./src/scss/mixin";
+@import "./src/scss/variables";
+
+.wrapper {
+  position: relative;
+
+  .genres {
+    position: relative;
+    @include select-disable();
+
+    .label {
+      font-size: 20px;
+      display: flex;
+      align-items: center;
+      background-color: $gray;
+      height: 50px;
+      padding: 0 20px;
+
+      span {
+        @include underscore;
+        padding-bottom: 5px;
+        cursor: pointer;
+        font-weight: bold;
+
+        &.active,
+        &:hover {
+          color: $main-red;
+        }
+      }
+    }
+
+    .dropdown {
+      border: 1px solid $main-red;
+      border-radius: $border-radius;
+      background-color: $body-bg;
+      padding: 10px;
+      position: absolute;
+      z-index: 90;
+      left: 0;
+      margin-top: 40px;
+      overflow: hidden;
+
+      ul {
+        overflow: hidden;
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        grid-template-rows: 1fr;
+        grid-column-gap: 10px;
+
+        li {
+          @include flex(center, center);
+          width: 145px;
+          height: 50px;
+          cursor: pointer;
+          white-space: nowrap;
+          word-break: keep-all;
+          overflow: hidden;
+          text-overflow: ellipsis;
+
+          &.active,
+          &:hover {
+            background: $gray;
+          }
+
+          &.active {
+            font-weight: bold;
+            color: $main-red;
+          }
+        }
+      }
+    }
+
+    &.notAllow {
+      pointer-events: none;
+      color: gray;
+      opacity: 0.4;
+    }
+  }
+}

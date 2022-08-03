@@ -1,0 +1,49 @@
+@import "src/scss/variables";
+
+.search {
+  position: relative;
+
+  .searchIcon {
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    color: white;
+  }
+
+  .clearIcon{
+    width: 18px;
+    height: 18px;
+    position: absolute;
+    left: 272px;
+    top: 17px;
+
+    &:hover{
+      cursor: pointer;
+    }
+  }
+
+  .input {
+    border: 2px solid $white;
+    padding: 10px 32px 10px 42px;
+    width: 300px;
+    border-radius: $border-radius;
+    font-size: 18px;
+    background-color: $gray;
+    color: $white;
+
+    &::placeholder {
+      font-style: italic;
+    }
+
+    &:focus {
+      border: 2px solid $main-red;
+
+      &::placeholder {
+        color: transparent;
+        transition: ease-out 0.2s;
+      }
+    }
+  }
+}

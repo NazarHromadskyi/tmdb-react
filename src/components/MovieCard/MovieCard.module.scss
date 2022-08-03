@@ -1,0 +1,59 @@
+@import "./src/scss/variables";
+
+.root {
+  display: flex;
+  flex-direction: column;
+  height: 340px;
+  width: 175px;
+  position: relative;
+  overflow: hidden;
+
+  .removeBtn {
+    position: absolute;
+    top: -10%;
+    left: 75%;
+    transition: 250ms ease-in-out;
+
+    button {
+      height: 30px;
+      width: 30px;
+      padding: 3px;
+      border-radius: $border-radius;
+      background-color: $main-red;
+      cursor: pointer;
+
+      img {
+        height: 100%;
+        width: 100%;
+      }
+    }
+  }
+
+  img {
+    height: 278px;
+    width: 175px;
+    border-radius: $border-radius;
+  }
+
+  .title {
+    width: 175px;
+    margin-top: 10px;
+
+    p {
+      font-weight: bold;
+      white-space: nowrap;
+      word-break: keep-all;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+
+  &:hover {
+    cursor: pointer;
+
+    .removeBtn {
+      top: 3%;
+      left: 75%;
+    }
+  }
+}

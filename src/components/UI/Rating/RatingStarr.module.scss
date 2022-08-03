@@ -1,0 +1,34 @@
+@import "src/scss/mixin";
+@import "src/scss/variables";
+
+.ratingBar {
+  .stars {
+    @include flex(center, center);
+    justify-content: space-between;
+
+    button {
+      background-color: transparent;
+      border: none;
+      outline: none;
+      cursor: pointer;
+
+      span {
+        font-size: 25px;
+        transition: 150ms ease-in-out;
+      }
+
+      .on {
+        color: $main-red;
+      }
+
+      .off {
+        color: #ccc;
+      }
+    }
+  }
+
+  .votes {
+    font-style: italic;
+    color: #ccc;
+  }
+}

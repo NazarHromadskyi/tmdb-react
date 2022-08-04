@@ -15,7 +15,7 @@ import { useFetchRatedQuery } from '../../services';
 import { scrollToTop } from '../../utils';
 import styles from './RateList.module.scss';
 
-export const RateList: React.FC = () => {
+const RateList: React.FC = () => {
     const isCardRemove = true;
     const { category } = useParams();
     const [currentPage, setCurrentPage] = useState(1);
@@ -76,3 +76,5 @@ export const RateList: React.FC = () => {
         </div>
     );
 };
+
+export default RateList;

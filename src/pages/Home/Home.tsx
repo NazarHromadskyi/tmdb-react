@@ -11,7 +11,7 @@ import { useFetchContentQuery } from '../../services';
 import { scrollToTop } from '../../utils';
 import styles from './Home.module.scss';
 
-export const Home: React.FC = () => {
+const Home: React.FC = () => {
     const { data, isFetching } = useFetchContentQuery({
         category: contentCategoryEnum.MOVIE,
         sortBy: `${SortParamsEnum.POPULARITY}.${SortOrder.DESC}`,
@@ -43,3 +43,5 @@ export const Home: React.FC = () => {
         </>
     );
 };
+
+export default Home;

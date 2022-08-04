@@ -21,7 +21,7 @@ import { useFetchContentQuery } from '../../services';
 import { scrollToTop } from '../../utils';
 import styles from './ContentList.module.scss';
 
-export const ContentList = () => {
+const ContentList = () => {
     const dispatch = useAppDispatch();
     const { category } = useParams();
     const { searchValue, sortType, genreIDs } = useAppSelector(filterSelector);
@@ -81,3 +81,5 @@ export const ContentList = () => {
         </div>
     );
 };
+
+export default ContentList;

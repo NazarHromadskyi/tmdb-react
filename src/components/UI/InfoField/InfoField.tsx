@@ -1,6 +1,6 @@
 import React from 'react';
 
-import styles from '../../../pages/movieDetails/MovieDetails.module.scss';
+import styles from '../../../pages/MovieDetails/MovieDetails.module.scss';
 import { IInfoField } from './InfoField.types';
 
 export const InfoField: React.FC<IInfoField> = ({

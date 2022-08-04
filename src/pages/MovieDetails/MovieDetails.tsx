@@ -20,7 +20,7 @@ import styles from './MovieDetails.module.scss';
 import { MovieLayout } from './MovieLayout';
 import { TVLayout } from './TVLayout';
 
-export const MovieDetails: React.FC = () => {
+const MovieDetails: React.FC = () => {
     const { category, id } = useParams();
     const { data, isFetching } = useFetchContentDetailsQuery({ category, id });
     const isRecommendations = data?.recommendations && data.recommendations.results.length > 0;
@@ -89,3 +89,5 @@ export const MovieDetails: React.FC = () => {
         </>
     );
 };
+
+export default MovieDetails;

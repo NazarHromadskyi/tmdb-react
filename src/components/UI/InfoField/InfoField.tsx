@@ -1,6 +1,6 @@
 import React from 'react';
 
-import styles from '../../../pages/MovieDetails/MovieDetails.module.scss';
+import styles from '../../../pages/ContentDetails/ContentDetails.module.scss';
 import { IInfoField } from './InfoField.types';
 
 export const InfoField: React.FC<IInfoField> = ({
@@ -9,13 +9,15 @@ export const InfoField: React.FC<IInfoField> = ({
     arr,
     field,
 }) => {
+    const UNKNOWN = 'unknown';
+
     if (value === 0 || !value) {
-        value = 'unknown';
+        value = UNKNOWN;
     }
 
     value = value.toLocaleString('uk');
 
-    if (arr) {
+    if (arr && arr.length > 0) {
         return (
             <p>
                 <span className={styles.fieldTitle}>{title}: </span>
@@ -26,6 +28,15 @@ export const InfoField: React.FC<IInfoField> = ({
                             {index < arr?.slice(0, 3).length - 1 ? ', ' : ''}
                         </span>
                     ))}
+            </p>
+        );
+    }
+
+    if (arr && arr.length === 0) {
+        return (
+            <p>
+                <span className={styles.fieldTitle}>{title}: </span>
+                <span>{UNKNOWN}</span>
             </p>
         );
     }

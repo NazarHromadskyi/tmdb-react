@@ -1,4 +1,6 @@
 import { SortOrder, SortParamsEnum } from '../enums';
+import { IMovie } from './IMovie';
+import { ITV } from './ITV';
 
 export interface IGuestSessionResponse {
     success: boolean;
@@ -12,6 +14,13 @@ export interface IFetchContentQuery {
     searchValue?: string,
     sortBy?: `${SortParamsEnum}.${SortOrder}`,
     withGenres?: number[];
+}
+
+export interface IContentResponse {
+    page: number;
+    results: IMovie[] | ITV[];
+    total_pages: number;
+    total_results: number;
 }
 
 export interface IFetchDetailsQuery {

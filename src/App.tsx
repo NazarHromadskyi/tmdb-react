@@ -2,7 +2,7 @@ import React, { lazy, Suspense } from 'react';
 
 import { Route, Routes } from 'react-router-dom';
 
-import { Layout, Loader } from './components';
+import { Layout } from './components';
 import Home from './pages/Home/Home';
 import { createGuestSession } from './services/api/createGuestSession';
 

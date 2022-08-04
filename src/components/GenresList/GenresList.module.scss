@@ -8,6 +8,27 @@
     position: relative;
     @include select-disable();
 
+    .reset {
+      position: absolute;
+      height: 50px;
+      top: 0;
+      left: 105%;
+      padding: 0 13px;
+      background-color: $gray;
+      @include flex(center, center);
+      cursor: pointer;
+
+      span {
+        @include underscore;
+        font-size: 20px;
+        font-weight: bold;
+
+        &:hover {
+          color: $main-red;
+        }
+      }
+    }
+
     .label {
       font-size: 20px;
       display: flex;
@@ -15,11 +36,11 @@
       background-color: $gray;
       height: 50px;
       padding: 0 20px;
+      cursor: pointer;
 
       span {
         @include underscore;
         padding-bottom: 5px;
-        cursor: pointer;
         font-weight: bold;
 
         &.active,

@@ -1,17 +1,15 @@
 @import "src/scss/variables";
+@import "src/scss/mixin";
 
 .pagination {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include flex(center, center);
+
 
   li {
     display: flex;
 
     a {
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      @include flex(center, center);
       margin-right: 10px;
       padding: 10px;
       border: 1px solid $white;

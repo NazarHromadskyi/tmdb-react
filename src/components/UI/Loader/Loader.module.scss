@@ -2,8 +2,6 @@
 @import "src/scss/variables";
 
 .loader {
-  height: 100%;
-  width: 100%;
   position: relative;
   @include flex(center, center);
   @include fullscreen;

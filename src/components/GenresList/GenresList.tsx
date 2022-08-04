@@ -1,26 +1,24 @@
 import React, { useState } from 'react';
 
 import {
-    filterSelector, setGenreIDs,
+    filterSelector,
+    setGenreIDs,
     useAppDispatch,
     useAppSelector,
 } from '../../redux';
 import { useFetchGenresQuery } from '../../services';
 import { addRemoveFromArray } from '../../utils';
+import { IGenresList } from './GenreList.types';
 import styles from './GenresList.module.scss';
-
-interface IGenresList {
-    category: string;
-    isAllow?: boolean;
-}
 
 export const GenresList: React.FC<IGenresList> = ({
     category,
     isAllow = true,
 }) => {
-    const { data } = useFetchGenresQuery(category);
     const dispatch = useAppDispatch();
+    const { data } = useFetchGenresQuery(category);
     const { genreIDs } = useAppSelector(filterSelector);
+
     const genresIDsCount = genreIDs.length;
     const [isVisible, setIsVisible] = useState(false);
 

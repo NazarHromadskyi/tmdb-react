@@ -16,8 +16,11 @@ export const Image: React.FC<IImage> = ({
 
     return (
         <div className={isSliderItem ? '' : styles.image}>
-            {path ? <img src={imageUrl} alt={alt} />
-                : <img className={styles.filterWhite} src={noImage} alt="Not found" />}
+            {path ? (
+                <img src={imageUrl} alt={alt} />
+            ) : (
+                <img className={styles.filterWhite} src={noImage} alt="Not found" />
+            )}
         </div>
     );
 };

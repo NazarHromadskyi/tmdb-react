@@ -25,8 +25,8 @@ const ContentList = () => {
     const dispatch = useAppDispatch();
     const { category } = useParams();
     const { searchValue, sortType, genreIDs } = useAppSelector(filterSelector);
-    const isFiltersAllow = !searchValue;
     const [currentPage, setCurrentPage] = useState(1);
+    const isFiltersAllow = !searchValue;
 
     const onChangePage = (page: number) => {
         setCurrentPage(page);

@@ -1,7 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 import { API_KEY, API_URL } from '../../constants';
-import { contentCategoryEnum } from '../../enums';
 import {
     IContentResponse,
     IFetchContentQuery,
@@ -67,7 +66,7 @@ export const tmdbApi = createApi({
                 },
             }),
         }),
-        fetchGenres: build.query<{ genres: IGenre[] }, contentCategoryEnum | string>({
+        fetchGenres: build.query<{ genres: IGenre[] }, string>({
             query: (category) => ({
                 url: `/genre/${category}/list`,
                 params: {

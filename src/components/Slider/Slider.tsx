@@ -8,7 +8,7 @@ import 'swiper/scss';
 import { ISlider } from './Slider.types';
 import { SliderItem } from './SliderItem';
 
-export const Slider: React.FC<ISlider> = ({ movies }) => (
+export const Slider: React.FC<ISlider> = ({ items }) => (
     <div className={styles.slider}>
         <Swiper
             grabCursor
@@ -22,11 +22,11 @@ export const Slider: React.FC<ISlider> = ({ movies }) => (
             modules={[Autoplay]}
         >
             {
-                movies.map((movie) => (
-                    <SwiperSlide key={movie.id}>
+                items.map((item) => (
+                    <SwiperSlide key={item.id}>
                         {
                             ({ isActive }) => (
-                                <SliderItem content={{ ...movie }} className={`${isActive ? 'active' : ''}`} />
+                                <SliderItem item={{ ...item }} className={`${isActive ? 'active' : ''}`} />
                             )
                         }
                     </SwiperSlide>

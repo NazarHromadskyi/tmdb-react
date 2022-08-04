@@ -1,10 +1,10 @@
 import { IMovie, ITV } from '../../types';
 
 export interface ISlider {
-    movies: IMovie[] | ITV[];
+    items: IMovie[] | ITV[];
 }
 
 export interface ISliderItem {
-    content: IMovie | ITV;
+    item: IMovie | ITV;
     className: string;
 }

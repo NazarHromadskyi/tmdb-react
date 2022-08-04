@@ -10,12 +10,15 @@ export const Sort: React.FC<ISort> = ({
     sortType,
     isAllow = true,
 }) => {
-    const sortParams = getSortByCategory(category);
-    const sortTypes = getSortObj(sortParams) as TSortType[];
     const dispatch = useAppDispatch();
     const sortRef = useRef<HTMLDivElement>(null);
+
     const [isVisible, setIsVisible] = useState(false);
     const [isShowMessage, setIsShowMessage] = useState(false);
+
+    const sortParams = getSortByCategory(category);
+    const sortTypes = getSortObj(sortParams) as TSortType[];
+
     const onClickSort = (obj: TSortType) => {
         dispatch(setSortType(obj));
         setIsVisible(false);
@@ -32,6 +35,7 @@ export const Sort: React.FC<ISort> = ({
         };
 
         document.body.addEventListener('click', handleClickOutside);
+
         return () => {
             document.body.removeEventListener('click', handleClickOutside);
         };

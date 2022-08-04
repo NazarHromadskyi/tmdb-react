@@ -8,6 +8,6 @@ export const isSessionExpired = (lastActivity: string) => {
     const normalizedDate = new Date(lastActivity).getTime();
     const now = new Date().getTime();
     const hours = Math.abs(normalizedDate - now) / milisecToHours;
-    console.log(hours);
+
     return hours > GUEST_SESSION_LIFETIME;
 };

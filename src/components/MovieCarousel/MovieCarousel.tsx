@@ -17,10 +17,7 @@ export const MovieCarousel: React.FC<IMovieCarousel> = ({
     category,
     sortBy,
 }) => {
-    const { data } = useFetchContentQuery({
-        category,
-        sortBy,
-    });
+    const { data } = useFetchContentQuery({ category, sortBy });
 
     return (
         <div className={`${styles.carousel}`}>

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { contentCategoryEnum } from '../../../enums';
+import { contentCategory } from '../../../enums';
 import { useFetchGenresQuery } from '../../../services';
 import { IGenre } from '../../../types';
 import styles from './Badge.module.scss';
@@ -10,7 +10,7 @@ export const Badge: React.FC<IBadge> = ({
     children,
     isMatchNeeded = true,
 }) => {
-    const { data } = useFetchGenresQuery(contentCategoryEnum.MOVIE);
+    const { data } = useFetchGenresQuery(contentCategory.MOVIE);
     const genres = data?.genres;
 
     if (isMatchNeeded) {

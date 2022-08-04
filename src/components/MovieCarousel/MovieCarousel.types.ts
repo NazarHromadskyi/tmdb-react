@@ -1,12 +1,11 @@
 import {
-    contentCategoryEnum,
-    movieListHeaderEnum,
+    contentCategory,
     SortOrder,
-    SortParamsEnum,
+    SortParams,
 } from '../../enums';
 
 export interface IMovieCarousel {
-    header: movieListHeaderEnum,
-    category: contentCategoryEnum,
-    sortBy: `${SortParamsEnum}.${SortOrder}`,
+    header: string,
+    category: contentCategory,
+    sortBy: `${SortParams}.${SortOrder}`,
 }

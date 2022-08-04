@@ -14,6 +14,7 @@ export const RatingStar: React.FC<IRatingStar> = ({
     const [hover, setHover] = useState(0);
 
     const [rateContent] = useRateContentMutation();
+
     const onClick = async (index: number) => {
         setRating(index);
         await rateContent({

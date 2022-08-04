@@ -3,7 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import { IMAGE_BASE_URL } from '../../constants';
-import { contentCategoryEnum } from '../../enums';
+import { contentCategory } from '../../enums';
 import { useFetchGenresQuery } from '../../services';
 import {
     Badge,
@@ -14,8 +14,8 @@ import { ISliderItem } from './Slider.types';
 import styles from './SliderItem.module.scss';
 
 export const SliderItem: React.FC<ISliderItem> = ({
-    content,
     className,
+    item,
 }) => {
     const {
         id,
@@ -24,9 +24,9 @@ export const SliderItem: React.FC<ISliderItem> = ({
         overview,
         poster_path,
         genre_ids,
-    } = content;
+    } = item;
     const background = `${IMAGE_BASE_URL}original/${backdrop_path}`;
-    const { data } = useFetchGenresQuery(contentCategoryEnum.MOVIE);
+    const { data } = useFetchGenresQuery(contentCategory.MOVIE);
     const isGenres = data?.genres && data?.genres.length > 0;
 
     return (
@@ -44,17 +44,26 @@ export const SliderItem: React.FC<ISliderItem> = ({
                                 {isGenres && (
                                     <div className={styles.genres}>
                                         {
-                                            genre_ids?.map((genreId) => <Badge key={genreId}>{genreId}</Badge>)
+                                            genre_ids?.map((genreId) => (
+                                                <Badge key={genreId}>{genreId}</Badge>
+                                            ))
                                         }
                                     </div>
                                 )}
                             </div>
                             <div className={styles.bottom}>
-                                <Link to={`/content/movie/${id}`}><Button>More details</Button></Link>
+                                <Link to={`/content/movie/${id}`}>
+                                    <Button>More details</Button>
+                                </Link>
                             </div>
                         </div>
                         <div className={styles.poster}>
-                            <Image path={poster_path} alt={title} width="w342" isSliderItem />
+                            <Image
+                                path={poster_path}
+                                alt={title}
+                                width="w342"
+                                isSliderItem
+                            />
                         </div>
                     </div>
                 </div>

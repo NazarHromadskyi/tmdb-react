@@ -1,4 +1,4 @@
-import { SortOrder, SortParamsEnum } from '../enums';
+import { SortOrder, SortParams } from '../enums';
 import { IMovie } from './IMovie';
 import { ITV } from './ITV';
 
@@ -12,7 +12,7 @@ export interface IFetchContentQuery {
     category: string | undefined,
     page?: number,
     searchValue?: string,
-    sortBy?: `${SortParamsEnum}.${SortOrder}`,
+    sortBy?: `${SortParams}.${SortOrder}`,
     withGenres?: number[];
 }
 
@@ -30,7 +30,7 @@ export interface IFetchDetailsQuery {
 
 export interface IFetchRated {
     category: string | number | undefined;
-    sortBy?: `${SortParamsEnum}.${SortOrder}`;
+    sortBy?: `${SortParams}.${SortOrder}`;
     page?: number;
 }
 

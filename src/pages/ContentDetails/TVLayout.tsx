@@ -8,7 +8,7 @@ interface ITVLayout {
     data: ITVDetails | undefined;
 }
 
-const TVLayout: React.FC<ITVLayout> = ({ data }) => (
+export const TVLayout: React.FC<ITVLayout> = ({ data }) => (
     <>
         {data && (
             <div className={styles.info__right}>
@@ -43,5 +43,3 @@ const TVLayout: React.FC<ITVLayout> = ({ data }) => (
         )}
     </>
 );
-
-export default TVLayout;

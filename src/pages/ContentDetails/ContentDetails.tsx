@@ -1,6 +1,4 @@
-import React, {
-    lazy, useEffect, useState, Suspense,
-} from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { useParams } from 'react-router-dom';
 
@@ -20,15 +18,8 @@ import { useFetchContentDetailsQuery } from '../../services';
 import { IMovieDetails, ITVDetails } from '../../types';
 import { scrollToTop } from '../../utils';
 import styles from './ContentDetails.module.scss';
-
-const MovieLayout = lazy(() => import(
-    /* webpackChunkName: "MovieLayout" */
-    './MovieLayout'
-));
-const TVLayout = lazy(() => import(
-    /* webpackChunkName: "TVLayout" */
-    './TVLayout'
-));
+import { MovieLayout } from './MovieLayout';
+import { TVLayout } from './TVLayout';
 
 const ContentDetails: React.FC = () => {
     const { category, id } = useParams();
@@ -73,13 +64,9 @@ const ContentDetails: React.FC = () => {
                             </div>
                             {
                                 category === 'movie' ? (
-                                    <Suspense fallback={<></>}>
-                                        <MovieLayout data={(data) as IMovieDetails} />
-                                    </Suspense>
+                                    <MovieLayout data={(data) as IMovieDetails} />
                                 ) : (
-                                    <Suspense fallback={<></>}>
-                                        <TVLayout data={(data) as ITVDetails} />
-                                    </Suspense>
+                                    <TVLayout data={(data) as ITVDetails} />
                                 )
                             }
                         </div>

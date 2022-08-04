@@ -8,7 +8,7 @@ export interface IMovieLayout {
     data: IMovieDetails;
 }
 
-const MovieLayout: React.FC<IMovieLayout> = ({ data }) => (
+export const MovieLayout: React.FC<IMovieLayout> = ({ data }) => (
     <>
         {data && (
             <div className={styles.info__right}>
@@ -44,5 +44,3 @@ const MovieLayout: React.FC<IMovieLayout> = ({ data }) => (
         )}
     </>
 );
-
-export default MovieLayout;

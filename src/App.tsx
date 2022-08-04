@@ -2,7 +2,7 @@ import React, { lazy, Suspense } from 'react';
 
 import { Route, Routes } from 'react-router-dom';
 
-import { Layout } from './components';
+import { Layout, Loader } from './components';
 import Home from './pages/Home/Home';
 import { createGuestSession } from './services/api/createGuestSession';
 
@@ -30,7 +30,7 @@ const App: React.FC = () => {
 
     return (
         <div style={{ position: 'relative' }}>
-            <Suspense>
+            <Suspense fallback={<Loader />}>
                 <Routes>
                     <Route path="" element={<Layout />}>
                         <Route index element={<Home />} />

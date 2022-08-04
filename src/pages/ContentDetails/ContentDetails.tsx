@@ -1,4 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, {
+    lazy, useEffect, useState, Suspense,
+} from 'react';
 
 import { useParams } from 'react-router-dom';
 
@@ -10,17 +12,25 @@ import {
     Image,
     Loader,
     Modal,
+    NoContent,
     RatingStar,
-    Trailer, NoContent,
+    Trailer,
 } from '../../components';
 import { useFetchContentDetailsQuery } from '../../services';
 import { IMovieDetails, ITVDetails } from '../../types';
 import { scrollToTop } from '../../utils';
-import styles from './MovieDetails.module.scss';
-import { MovieLayout } from './MovieLayout';
-import { TVLayout } from './TVLayout';
+import styles from './ContentDetails.module.scss';
 
-const MovieDetails: React.FC = () => {
+const MovieLayout = lazy(() => import(
+    /* webpackChunkName: "MovieLayout" */
+    './MovieLayout'
+));
+const TVLayout = lazy(() => import(
+    /* webpackChunkName: "TVLayout" */
+    './TVLayout'
+));
+
+const ContentDetails: React.FC = () => {
     const { category, id } = useParams();
     const { data, isFetching } = useFetchContentDetailsQuery({ category, id });
     const isRecommendations = data?.recommendations && data.recommendations.results.length > 0;
@@ -63,9 +73,13 @@ const MovieDetails: React.FC = () => {
                             </div>
                             {
                                 category === 'movie' ? (
-                                    <MovieLayout data={(data) as IMovieDetails} />
+                                    <Suspense fallback={<></>}>
+                                        <MovieLayout data={(data) as IMovieDetails} />
+                                    </Suspense>
                                 ) : (
-                                    <TVLayout data={(data) as ITVDetails} />
+                                    <Suspense fallback={<></>}>
+                                        <TVLayout data={(data) as ITVDetails} />
+                                    </Suspense>
                                 )
                             }
                         </div>
@@ -90,4 +104,4 @@ const MovieDetails: React.FC = () => {
     );
 };
 
-export default MovieDetails;
+export default ContentDetails;

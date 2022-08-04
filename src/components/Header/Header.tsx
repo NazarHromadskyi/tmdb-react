@@ -14,7 +14,7 @@ export const Header: React.FC = () => {
     const active = headerNavbar.findIndex((el) => el.path === pathname);
 
     const shrinkHeader = () => {
-        if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+        if (document.body.scrollTop > 75 || document.documentElement.scrollTop > 75) {
             headerRef.current?.classList.add('shrink');
         } else {
             headerRef.current?.classList.remove('shrink');

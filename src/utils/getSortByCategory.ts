@@ -1,8 +1,13 @@
-import { SortParamsEnum } from '../enums';
+import { SortParams } from '../enums';
 
 const {
-    POPULARITY, REVENUE, RELEASE_DATE, VOTE_AVERAGE, CREATED_AT, FIRST_AIR_DATE,
-} = SortParamsEnum;
+    CREATED_AT,
+    FIRST_AIR_DATE,
+    POPULARITY,
+    RELEASE_DATE,
+    REVENUE,
+    VOTE_AVERAGE,
+} = SortParams;
 
 const movieSortParams = [POPULARITY, VOTE_AVERAGE, RELEASE_DATE, REVENUE];
 const tvSortParams = [POPULARITY, VOTE_AVERAGE, FIRST_AIR_DATE];

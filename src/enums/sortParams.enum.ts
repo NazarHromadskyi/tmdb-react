@@ -1,4 +1,4 @@
-export enum SortParamsEnum {
+export enum SortParams {
     CREATED_AT = 'created_at',
     FIRST_AIR_DATE = 'first_air_date',
     POPULARITY = 'popularity',

@@ -21,6 +21,7 @@ export const MovieCard: React.FC<IContentCardProps> = ({
         vote_average,
         rating,
     } = content;
+
     if (category === 'movies') category = 'movie';
     const [removeItem] = useRemoveRatedContentMutation();
 
@@ -50,7 +51,10 @@ export const MovieCard: React.FC<IContentCardProps> = ({
                     <div>
                         <RatingNumber rating={vote_average} />
                         {rating && (
-                            <span style={{ fontStyle: 'italic' }}> (<RatingNumber rating={rating} />)</span>)}
+                            <span style={{ fontStyle: 'italic' }}>
+                                (<RatingNumber rating={rating} />)
+                            </span>
+                        )}
                     </div>
                 </div>
             </Link>

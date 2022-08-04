@@ -15,15 +15,12 @@ import { useFetchRatedQuery } from '../../services';
 import { scrollToTop } from '../../utils';
 import styles from './RateList.module.scss';
 
-export const RateList: React.FC = () => {
+const RateList: React.FC = () => {
     const isCardRemove = true;
     const { category } = useParams();
     const [currentPage, setCurrentPage] = useState(1);
     const { sortType } = useAppSelector(filterSelector);
-    const {
-        data,
-        isFetching,
-    } = useFetchRatedQuery({
+    const { data, isFetching } = useFetchRatedQuery({
         category,
         page: currentPage,
         sortBy: sortType.param,
@@ -31,7 +28,11 @@ export const RateList: React.FC = () => {
 
     const isData = data && data.results.length > 0;
     const content = isData
-        ? <Catalog isCardRemove={isCardRemove} category={category} content={data?.results} /> : <NoContent />;
+        ? (
+            <Catalog isCardRemove={isCardRemove} category={category} content={data?.results} />
+        ) : (
+            <NoContent />
+        );
 
     const onChangePage = (page: number) => {
         setCurrentPage(page);
@@ -76,3 +77,5 @@ export const RateList: React.FC = () => {
         </div>
     );
 };
+
+export default RateList;

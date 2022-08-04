@@ -10,23 +10,25 @@ import {
     Image,
     Loader,
     Modal,
+    NoContent,
     RatingStar,
-    Trailer, NoContent,
+    Trailer,
 } from '../../components';
 import { useFetchContentDetailsQuery } from '../../services';
 import { IMovieDetails, ITVDetails } from '../../types';
 import { scrollToTop } from '../../utils';
-import styles from './MovieDetails.module.scss';
+import styles from './ContentDetails.module.scss';
 import { MovieLayout } from './MovieLayout';
 import { TVLayout } from './TVLayout';
 
-export const MovieDetails: React.FC = () => {
+const ContentDetails: React.FC = () => {
     const { category, id } = useParams();
     const { data, isFetching } = useFetchContentDetailsQuery({ category, id });
+    const [isModalActive, setIsModalActive] = useState(false);
+
     const isRecommendations = data?.recommendations && data.recommendations.results.length > 0;
     const isCredits = data && data?.credits?.cast.length > 0;
     const isTrailer = data && data?.videos.results.length > 0;
-    const [isModalActive, setIsModalActive] = useState(false);
 
     useEffect(() => {
         scrollToTop();
@@ -42,7 +44,11 @@ export const MovieDetails: React.FC = () => {
                         <div className={styles.info}>
                             <div className={styles.info__left}>
                                 <div className={styles.poster}>
-                                    <Image path={data.poster_path} alt={data.name || data.title} width="w342" />
+                                    <Image
+                                        path={data.poster_path}
+                                        alt={data.name || data.title}
+                                        width="w342"
+                                    />
                                 </div>
                                 {isTrailer && (
                                     <div
@@ -78,14 +84,24 @@ export const MovieDetails: React.FC = () => {
                         {
                             isRecommendations && (
                                 <div className={styles.content__recommendations}>
-                                    <h2><span className={styles.fieldTitle}>Recommendations</span></h2>
-                                    <Catalog category={category} content={data.recommendations?.results} />
+                                    <h2>
+                                        <span className={styles.fieldTitle}>Recommendations</span>
+                                    </h2>
+                                    <Catalog
+                                        category={category}
+                                        content={data.recommendations?.results}
+                                    />
                                 </div>
                             )
                         }
                     </div>
                 </div>
-            ) : <NoContent />)}
+            ) : (
+                <NoContent />
+            )
+            )}
         </>
     );
 };
+
+export default ContentDetails;

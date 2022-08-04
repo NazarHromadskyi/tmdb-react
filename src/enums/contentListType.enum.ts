@@ -1,4 +1,4 @@
-export enum contentListTypeEnum {
+export enum contentListType {
     NOW_PLAYING = 'now_playing',
     POPULAR = 'popular',
     TOP_RATED = 'top_rated',

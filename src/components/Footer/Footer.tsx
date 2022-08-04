@@ -14,6 +14,7 @@ export const Footer: React.FC = () => (
                     <span>Home</span>
                     <span>Movies</span>
                     <span>TV Series</span>
+                    {/* todo */}
                 </div>
             </div>
             <div className={styles.content__right}>

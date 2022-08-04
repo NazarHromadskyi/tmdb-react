@@ -10,4 +10,4 @@ export * from './MovieCarousel/MovieCarousel';
 export * from './Slider/Slider';
 export * from './Slider/SliderItem';
 export * from './UI';
-export * from './YouTube/Trailer';
+export * from './Trailer/Trailer';

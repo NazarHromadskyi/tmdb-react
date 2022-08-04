@@ -13,10 +13,10 @@ import styles from './Search.module.scss';
 
 export const Search: React.FC = () => {
     const inputRef = useRef<HTMLInputElement>(null);
-    const dispatch = useAppDispatch();
-    const [value, setValue] = useState('');
-    const { searchValue } = useAppSelector(filterSelector);
     const isMounted = useRef(false);
+    const dispatch = useAppDispatch();
+    const { searchValue } = useAppSelector(filterSelector);
+    const [value, setValue] = useState('');
 
     const dispatchSearchValue = (value: string) => dispatch(setSearchValue(value));
     const debouncedValue = useDebounce(dispatchSearchValue, 500);
@@ -25,6 +25,7 @@ export const Search: React.FC = () => {
         setValue(value);
         debouncedValue(value);
     };
+
     const onClickClear = () => {
         dispatch(setSearchValue(''));
         setValue('');

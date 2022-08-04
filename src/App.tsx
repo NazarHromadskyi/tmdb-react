@@ -8,53 +8,51 @@ import { createGuestSession } from './services/api/createGuestSession';
 
 import './scss/main.scss';
 
-const ContentList = lazy(() => import('./pages/ContentList/ContentList'));
-const ContentDetails = lazy(() => import('./pages/MovieDetails/MovieDetails'));
-const NotFound = lazy(() => import('./pages/NotFound/NotFound'));
-const RateList = lazy(() => import('./pages/Ratelist/RateList'));
+const ContentList = lazy(() => import(
+    /* webpackChunkName: "ContentList" */
+    './pages/ContentList/ContentList'
+));
+const ContentDetails = lazy(() => import(
+    /* webpackChunkName: "ContentDetails" */
+    './pages/ContentDetails/ContentDetails'
+));
+const NotFound = lazy(() => import(
+    /* webpackChunkName: "ContentList" */
+    './pages/NotFound/NotFound'
+));
+const RateList = lazy(() => import(
+    /* webpackChunkName: "ContentList" */
+    './pages/Ratelist/RateList'
+));
 
 const App: React.FC = () => {
     createGuestSession();
 
     return (
         <div style={{ position: 'relative' }}>
-            <Routes>
-                <Route path="" element={<Layout />}>
-                    <Route index element={<Home />} />
-                    <Route
-                        path="/content/:category"
-                        element={(
-                            <Suspense fallback={<Loader />}>
-                                <ContentList />
-                            </Suspense>
-                        )}
-                    />
-                    <Route
-                        path="/content/:category/:id"
-                        element={(
-                            <Suspense fallback={<Loader />}>
-                                <ContentDetails />
-                            </Suspense>
-                        )}
-                    />
-                    <Route
-                        path="/rated/:category"
-                        element={(
-                            <Suspense fallback={<Loader />}>
-                                <RateList />
-                            </Suspense>
-                        )}
-                    />
-                    <Route
-                        path="*"
-                        element={(
-                            <Suspense fallback={<Loader />}>
-                                <NotFound />
-                            </Suspense>
-                        )}
-                    />
-                </Route>
-            </Routes>
+            <Suspense>
+                <Routes>
+                    <Route path="" element={<Layout />}>
+                        <Route index element={<Home />} />
+                        <Route
+                            path="/content/:category"
+                            element={<ContentList />}
+                        />
+                        <Route
+                            path="/content/:category/:id"
+                            element={<ContentDetails />}
+                        />
+                        <Route
+                            path="/rated/:category"
+                            element={<RateList />}
+                        />
+                        <Route
+                            path="*"
+                            element={<NotFound />}
+                        />
+                    </Route>
+                </Routes>
+            </Suspense>
         </div>
     );
 };

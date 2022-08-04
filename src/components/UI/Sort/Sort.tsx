@@ -1,5 +1,6 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 
+import { useHandleClickOutside } from '../../../hooks';
 import { setSortType, TSortType, useAppDispatch } from '../../../redux';
 import { getSortByCategory, getSortObj, scrollToTop } from '../../../utils';
 import styles from './Sort.module.scss';
@@ -25,21 +26,22 @@ export const Sort: React.FC<ISort> = ({
         scrollToTop();
     };
 
-    useEffect(() => {
-        const handleClickOutside = (e: MouseEvent) => {
-            if (sortRef.current && !e.composedPath()
-                .includes(sortRef.current)) {
-                setIsVisible(false);
-                setIsShowMessage(false);
-            }
-        };
-
-        document.body.addEventListener('click', handleClickOutside);
-
-        return () => {
-            document.body.removeEventListener('click', handleClickOutside);
-        };
-    }, []);
+    useHandleClickOutside(sortRef, setIsVisible, setIsShowMessage);
+    // useEffect(() => {
+    //     const handleClickOutside = (e: MouseEvent) => {
+    //         if (sortRef.current && !e.composedPath()
+    //             .includes(sortRef.current)) {
+    //             setIsVisible(false);
+    //             setIsShowMessage(false);
+    //         }
+    //     };
+    //
+    //     document.body.addEventListener('click', handleClickOutside);
+    //
+    //     return () => {
+    //         document.body.removeEventListener('click', handleClickOutside);
+    //     };
+    // }, []);
 
     return (
         <div className={styles.wrapper} ref={sortRef}>

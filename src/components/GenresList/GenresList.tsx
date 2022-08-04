@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 
+import { useHandleClickOutside } from '../../hooks';
 import {
     filterSelector,
     setGenreIDs,
@@ -16,6 +17,7 @@ export const GenresList: React.FC<IGenresList> = ({
     isAllow = true,
 }) => {
     const dispatch = useAppDispatch();
+    const genresRef = useRef<HTMLDivElement>(null);
     const { data } = useFetchGenresQuery(category);
     const { genreIDs } = useAppSelector(filterSelector);
 
@@ -26,8 +28,10 @@ export const GenresList: React.FC<IGenresList> = ({
         dispatch(setGenreIDs(addRemoveFromArray(id, [...genreIDs])));
     };
 
+    useHandleClickOutside(genresRef, setIsVisible);
+
     return (
-        <div className={styles.wrapper}>
+        <div className={styles.wrapper} ref={genresRef}>
             <div className={isAllow ? `${styles.genres}` : `${styles.notAllow} ${styles.genres}`}>
                 <div
                     className={styles.label}

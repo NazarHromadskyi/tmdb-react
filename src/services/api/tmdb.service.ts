@@ -3,27 +3,19 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { API_KEY, API_URL } from '../../constants';
 import {
     IContentResponse,
-    IFetchContentQuery,
-    IFetchDetailsQuery,
+    IFetchContent,
+    IFetchDetails,
     IFetchRated,
     IGenre,
     IGuestSessionResponse,
-    IMovieDetails,
-    IRateResponse,
+    IMovieDetails, IRateContent,
+    IRateResponse, IRemoveRated,
     ITVDetails,
 } from '../../types';
-import { isSessionExpired } from '../../utils';
-import { getGuestSessionId, getLastActivity } from './createGuestSession';
-
-const LANGUAGE = 'en';
+import { getGuestSessionId } from './createGuestSession';
 
 const GUEST_SESSION_ID = getGuestSessionId();
-const LAST_ACTIVITY = getLastActivity();
-
-console.log(GUEST_SESSION_ID);
-console.log(LAST_ACTIVITY, 'tmbs');
-console.log(isSessionExpired(LAST_ACTIVITY as string));
-
+const LANGUAGE = 'en';
 const VOTE_COUNT_GTE = 'vote_count.gte';
 
 export const tmdbApi = createApi({
@@ -39,9 +31,13 @@ export const tmdbApi = createApi({
                 },
             }),
         }),
-        fetchContent: build.query<IContentResponse, IFetchContentQuery>({
+        fetchContent: build.query<IContentResponse, IFetchContent>({
             query: ({
-                category, page, searchValue, sortBy, withGenres,
+                category,
+                page,
+                searchValue,
+                sortBy,
+                withGenres,
             }) => ({
                 url: searchValue ? `/search/${category}` : `/discover/${category}`,
                 params: {
@@ -56,7 +52,7 @@ export const tmdbApi = createApi({
             }),
             keepUnusedDataFor: 180,
         }),
-        fetchContentDetails: build.query<IMovieDetails | ITVDetails, IFetchDetailsQuery>({
+        fetchContentDetails: build.query<IMovieDetails | ITVDetails, IFetchDetails>({
             query: ({ category, id }) => ({
                 url: `/${category}/${id}`,
                 params: {
@@ -93,20 +89,19 @@ export const tmdbApi = createApi({
                 ]
                 : [{ type: 'Movies', id: 'LIST' }]),
         }),
-        rateContent: build.mutation<IRateResponse,
-            { movieId: number, value: number, category: string | undefined }>({
-                query: ({ value, movieId, category }) => ({
-                    url: `/${category}/${movieId}/rating`,
-                    method: 'POST',
-                    body: { value },
-                    params: {
-                        api_key: API_KEY,
-                        guest_session_id: GUEST_SESSION_ID,
-                    },
-                }),
-                invalidatesTags: [{ type: 'Movies', id: 'LIST' }],
+        rateContent: build.mutation<IRateResponse, IRateContent>({
+            query: ({ value, movieId, category }) => ({
+                url: `/${category}/${movieId}/rating`,
+                method: 'POST',
+                body: { value },
+                params: {
+                    api_key: API_KEY,
+                    guest_session_id: GUEST_SESSION_ID,
+                },
             }),
-        removeRatedContent: build.mutation<IRateResponse, { movieId: number, category: string | undefined }>({
+            invalidatesTags: [{ type: 'Movies', id: 'LIST' }],
+        }),
+        removeRatedContent: build.mutation<IRateResponse, IRemoveRated>({
             query: ({ movieId, category }) => ({
                 url: `/${category}/${movieId}/rating`,
                 method: 'DELETE',

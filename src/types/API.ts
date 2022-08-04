@@ -8,11 +8,11 @@ export interface IGuestSessionResponse {
     expires_at: string;
 }
 
-export interface IFetchContentQuery {
-    category: string | undefined,
-    page?: number,
-    searchValue?: string,
-    sortBy?: `${SortParams}.${SortOrder}`,
+export interface IFetchContent {
+    category: string | undefined;
+    page?: number;
+    searchValue?: string;
+    sortBy?: `${SortParams}.${SortOrder}`;
     withGenres?: number[];
 }
 
@@ -23,9 +23,9 @@ export interface IContentResponse {
     total_results: number;
 }
 
-export interface IFetchDetailsQuery {
-    category: string | undefined,
-    id: string | number | undefined,
+export interface IFetchDetails {
+    category: string | undefined;
+    id: string | number | undefined;
 }
 
 export interface IFetchRated {
@@ -38,4 +38,15 @@ export interface IRateResponse {
     success: boolean;
     status_code: number;
     status_message: string;
+}
+
+export interface IRateContent {
+    movieId: number;
+    value: number;
+    category: string | undefined;
+}
+
+export interface IRemoveRated {
+    movieId: number;
+    category: string | undefined;
 }

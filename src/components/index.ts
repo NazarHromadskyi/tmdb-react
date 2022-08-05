@@ -5,7 +5,7 @@ export * from './Footer/Footer';
 export * from './GenresList/GenresList';
 export * from './Header/Header';
 export * from './Layout/Layout';
-export * from './MovieCard/MovieCard';
+export * from './MovieCard/ContentCard';
 export * from './MovieCarousel/MovieCarousel';
 export * from './Slider/Slider';
 export * from './Slider/SliderItem';

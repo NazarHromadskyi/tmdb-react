@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { MovieCard } from '../MovieCard/MovieCard';
+import { ContentCard } from '../MovieCard/ContentCard';
 import styles from './Catalog.module.scss';
 import { ICatalog } from './Catalog.types';
 
@@ -13,7 +13,7 @@ export const Catalog: React.FC<ICatalog> = ({
         <div className={styles.items}>
             {
                 content?.map((movie) => (
-                    <MovieCard
+                    <ContentCard
                         key={movie.id}
                         category={category}
                         isRemove={isCardRemove}

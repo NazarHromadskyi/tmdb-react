@@ -5,10 +5,10 @@ import { Link } from 'react-router-dom';
 import basket from '../../assets/icons/basket_icon.svg';
 import { useRemoveRatedContentMutation } from '../../services';
 import { RatingNumber, Image } from '../UI';
-import styles from './MovieCard.module.scss';
-import { IContentCardProps } from './MovieCard.types';
+import styles from './ContentCard.module.scss';
+import { IContentCardProps } from './ContentCard.types';
 
-export const MovieCard: React.FC<IContentCardProps> = ({
+export const ContentCard: React.FC<IContentCardProps> = ({
     content,
     category,
     isRemove,

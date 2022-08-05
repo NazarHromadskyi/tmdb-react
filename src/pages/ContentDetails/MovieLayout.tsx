@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { memo } from 'react';
 
 import { Badge, InfoField } from '../../components';
 import styles from './ContentDetails.module.scss';
 import { IMovieLayout } from './ContentDetails.types';
 
-export const MovieLayout: React.FC<IMovieLayout> = ({ data }) => {
+export const MovieLayout: React.FC<IMovieLayout> = memo(({ data }) => {
     const isTagline = data.tagline.length > 0;
 
     return (
@@ -40,4 +40,4 @@ export const MovieLayout: React.FC<IMovieLayout> = ({ data }) => {
             </div>
         </>
     );
-};
+});

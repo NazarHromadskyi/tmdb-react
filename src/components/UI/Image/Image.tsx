@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { memo } from 'react';
 
 import noImage from '../../../assets/icons/no_image.svg';
 import { IMAGE_BASE_URL } from '../../../constants';
 import styles from './Image.module.scss';
 import { IImage } from './Image.types';
 
-export const Image: React.FC<IImage> = ({
+export const Image: React.FC<IImage> = memo(({
     path,
     alt,
     width = 'w500',
@@ -23,4 +23,4 @@ export const Image: React.FC<IImage> = ({
             )}
         </div>
     );
-};
+});

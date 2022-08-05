@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { memo } from 'react';
 
 import { ActorCard } from '../ActorCard/ActorCard';
 import styles from './CastList.module.scss';
 import { ICastList } from './CastList.types';
 
-export const CastList: React.FC<ICastList> = ({ cast }) => (
+export const CastList: React.FC<ICastList> = memo(({ cast }) => (
     <div className={styles.list}>
         <h2>Cast</h2>
         <div className={styles.list__items}>
@@ -13,4 +13,4 @@ export const CastList: React.FC<ICastList> = ({ cast }) => (
             }
         </div>
     </div>
-);
+));

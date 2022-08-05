@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, { memo, useState } from 'react';
 
 import { useRateContentMutation } from '../../../services';
 import { IRatingStar } from './Rating.types';
 import styles from './RatingStarr.module.scss';
 
-export const RatingStar: React.FC<IRatingStar> = ({
+export const RatingStar: React.FC<IRatingStar> = memo(({
     movieId,
     category,
     vote_average,
@@ -52,4 +52,4 @@ export const RatingStar: React.FC<IRatingStar> = ({
             </div>
         </div>
     );
-};
+});

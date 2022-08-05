@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { memo } from 'react';
 
 import { Badge, InfoField } from '../../components';
 import styles from './ContentDetails.module.scss';
 import { ITVLayout } from './ContentDetails.types';
 
-export const TVLayout: React.FC<ITVLayout> = ({ data }) => {
+export const TVLayout: React.FC<ITVLayout> = memo(({ data }) => {
     const isTagline = data.tagline.length > 0;
 
     return (
@@ -40,4 +40,4 @@ export const TVLayout: React.FC<ITVLayout> = ({ data }) => {
             </div>
         </>
     );
-};
+});

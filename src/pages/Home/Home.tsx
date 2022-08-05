@@ -1,6 +1,11 @@
 import React, { useEffect } from 'react';
 
-import { Loader, MovieCarousel, Slider } from '../../components';
+import {
+    Loader,
+    MovieCarousel,
+    NoContent,
+    Slider,
+} from '../../components';
 import {
     contentCategory,
     SortParams,
@@ -22,7 +27,7 @@ const Home: React.FC = () => {
 
     return (
         <>
-            {isFetching ? <Loader /> : (
+            {isFetching ? <Loader /> : (data ? (
                 <>
                     {data && <Slider items={data.results.slice(0, 5)} />}
                     <div className={styles.content}>
@@ -38,6 +43,7 @@ const Home: React.FC = () => {
                         />
                     </div>
                 </>
+            ) : <NoContent />
             )}
         </>
     );

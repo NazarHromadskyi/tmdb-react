@@ -36,7 +36,6 @@ const ContentDetails: React.FC = () => {
 
     return (
         <>
-            {/* eslint-disable-next-line no-nested-ternary */}
             {isFetching ? <Loader /> : (data ? (
                 <div className={styles.root}>
                     <Banner path={data.backdrop_path} />

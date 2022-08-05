@@ -57,6 +57,7 @@
         "": "never"
       }
     ],
+    "no-nested-ternary": "off",
     "react/jsx-props-no-spreading": "off",
     "no-param-reassign": "off",
     "react/no-array-index-key": "off",

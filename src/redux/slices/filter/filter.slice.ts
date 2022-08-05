@@ -2,14 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import { SortParams, SortOrder } from '../../../enums';
 import { RootState } from '../../store';
-
-export type TSortType = { title: string, param: `${SortParams}.${SortOrder}` };
-
-interface IFilterSliceState {
-    genreIDs: number[];
-    searchValue: string;
-    sortType: TSortType;
-}
+import { IFilterSliceState, TSortType } from './filter.types';
 
 const initialState: IFilterSliceState = {
     genreIDs: [],

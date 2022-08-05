@@ -110,6 +110,13 @@ export const tmdbApi = createApi({
     }),
 });
 
+// todo
+/* After a delete request, sometimes, content card is still displayed,
+but actually it is deleted from the API.
+This can be seen in the Chrome dev tools Network tab,
+and if you reload the page, it will disappear.
+The problem remains if you use asyncThunk */
+
 export const {
     useLazyCreateGuestSessionQuery,
     useFetchGenresQuery,

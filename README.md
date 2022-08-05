@@ -1,6 +1,6 @@
 # TMDB Application
 
-[Deployed version](https://tmdb-react-ten.vercel.app/).
+## [Deployed version](https://tmdb-react-ten.vercel.app/).
 
 
 **Tech stack**:

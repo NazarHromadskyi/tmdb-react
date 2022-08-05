@@ -1,6 +1,6 @@
 # TMDB Application
 
-Pizza shop [deployed version](https://tmdb-react-fwydrhsmi-nazarhromadskyi.vercel.app/).
+[Deployed version](https://tmdb-react-fwydrhsmi-nazarhromadskyi.vercel.app/).
 
 
 **Tech stack**:

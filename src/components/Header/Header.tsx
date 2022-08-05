@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { memo, useEffect, useRef } from 'react';
 
 import { Link, useLocation } from 'react-router-dom';
 
@@ -7,7 +7,7 @@ import { scrollToTop } from '../../utils';
 import styles from './Header.module.scss';
 import { headerNavbar } from './Header.navbar';
 
-export const Header: React.FC = () => {
+export const Header: React.FC = memo(() => {
     const { pathname } = useLocation();
     const headerRef = useRef<HTMLDivElement>(null);
 
@@ -57,4 +57,4 @@ export const Header: React.FC = () => {
             </div>
         </header>
     );
-};
+});

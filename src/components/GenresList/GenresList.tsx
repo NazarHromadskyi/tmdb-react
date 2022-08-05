@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react';
 
 import { useHandleClickOutside } from '../../hooks';
 import {
-    filterSelector,
+    filterSelector, resetGenreIDs,
     setGenreIDs,
     useAppDispatch,
     useAppSelector,
@@ -28,6 +28,11 @@ export const GenresList: React.FC<IGenresList> = ({
         dispatch(setGenreIDs(addRemoveFromArray(id, [...genreIDs])));
     };
 
+    const onClickReset = () => {
+        dispatch(resetGenreIDs());
+        setIsVisible(false);
+    };
+
     useHandleClickOutside(genresRef, setIsVisible);
 
     return (
@@ -42,6 +47,14 @@ export const GenresList: React.FC<IGenresList> = ({
                     >Choose genres ({genresIDsCount})
                     </span>
                 </div>
+                {genresIDsCount > 0 && (
+                    <div
+                        className={styles.reset}
+                        onClick={() => onClickReset()}
+                    >
+                        <span>Reset</span>
+                    </div>
+                )}
                 {isVisible && (
                     <div className={styles.dropdown}>
                         <ul>

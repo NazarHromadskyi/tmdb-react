@@ -26,6 +26,11 @@ const RateList: React.FC = () => {
         sortBy: sortType.param,
     });
 
+    const onChangePage = (page: number) => {
+        setCurrentPage(page);
+        scrollToTop();
+    };
+
     const isData = data && data.results.length > 0;
     const content = isData
         ? (
@@ -33,11 +38,6 @@ const RateList: React.FC = () => {
         ) : (
             <NoContent />
         );
-
-    const onChangePage = (page: number) => {
-        setCurrentPage(page);
-        scrollToTop();
-    };
 
     return (
         <div className={styles.watchlist}>

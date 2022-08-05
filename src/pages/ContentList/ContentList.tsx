@@ -21,7 +21,7 @@ import { useFetchContentQuery } from '../../services';
 import { scrollToTop } from '../../utils';
 import styles from './ContentList.module.scss';
 
-const ContentList = () => {
+const ContentList: React.FC = () => {
     const dispatch = useAppDispatch();
     const { category } = useParams();
     const { searchValue, sortType, genreIDs } = useAppSelector(filterSelector);

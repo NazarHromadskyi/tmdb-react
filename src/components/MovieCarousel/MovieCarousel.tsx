@@ -6,7 +6,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 
 import { useFetchContentQuery } from '../../services';
 import { scrollToTop } from '../../utils';
-import { MovieCard } from '../MovieCard/MovieCard';
+import { ContentCard } from '../MovieCard/ContentCard';
 import { Button } from '../UI';
 import styles from './MovieCarousel.module.scss';
 import '../../scss/swiper/_swiper.scss';
@@ -36,7 +36,7 @@ export const MovieCarousel: React.FC<IMovieCarousel> = ({
                 {
                     data?.results.map((movie) => (
                         <SwiperSlide key={movie.id}>
-                            <MovieCard category={category} content={{ ...movie }} />
+                            <ContentCard category={category} content={{ ...movie }} />
                         </SwiperSlide>
                     ))
                 }

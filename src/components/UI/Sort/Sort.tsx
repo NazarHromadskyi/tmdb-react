@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { memo, useRef, useState } from 'react';
 
 import { useHandleClickOutside } from '../../../hooks';
 import { setSortType, TSortType, useAppDispatch } from '../../../redux';
@@ -6,7 +6,7 @@ import { getSortByCategory, getSortObj, scrollToTop } from '../../../utils';
 import styles from './Sort.module.scss';
 import { ISort } from './Sort.types';
 
-export const Sort: React.FC<ISort> = ({
+export const Sort: React.FC<ISort> = memo(({
     category,
     sortType,
     isAllow = true,
@@ -27,21 +27,6 @@ export const Sort: React.FC<ISort> = ({
     };
 
     useHandleClickOutside(sortRef, setIsVisible, setIsShowMessage);
-    // useEffect(() => {
-    //     const handleClickOutside = (e: MouseEvent) => {
-    //         if (sortRef.current && !e.composedPath()
-    //             .includes(sortRef.current)) {
-    //             setIsVisible(false);
-    //             setIsShowMessage(false);
-    //         }
-    //     };
-    //
-    //     document.body.addEventListener('click', handleClickOutside);
-    //
-    //     return () => {
-    //         document.body.removeEventListener('click', handleClickOutside);
-    //     };
-    // }, []);
 
     return (
         <div className={styles.wrapper} ref={sortRef}>
@@ -93,4 +78,4 @@ export const Sort: React.FC<ISort> = ({
             )}
         </div>
     );
-};
+});

@@ -47,7 +47,7 @@ export interface IMovieDetails {
     runtime: number | undefined;
     spoken_languages: TSpokenLanguages[];
     status: string;
-    tagline: string | undefined;
+    tagline: string;
     title: string;
     video: boolean;
     videos: IVideos;

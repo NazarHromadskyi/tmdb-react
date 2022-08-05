@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { memo, useEffect, useState } from 'react';
 
 import { useParams } from 'react-router-dom';
 
@@ -21,7 +21,7 @@ import styles from './ContentDetails.module.scss';
 import { MovieLayout } from './MovieLayout';
 import { TVLayout } from './TVLayout';
 
-const ContentDetails: React.FC = () => {
+const ContentDetails: React.FC = memo(() => {
     const { category, id } = useParams();
     const { data, isFetching } = useFetchContentDetailsQuery({ category, id });
     const [isModalActive, setIsModalActive] = useState(false);
@@ -36,7 +36,6 @@ const ContentDetails: React.FC = () => {
 
     return (
         <>
-            {/* eslint-disable-next-line no-nested-ternary */}
             {isFetching ? <Loader /> : (data ? (
                 <div className={styles.root}>
                     <Banner path={data.backdrop_path} />
@@ -102,6 +101,6 @@ const ContentDetails: React.FC = () => {
             )}
         </>
     );
-};
+});
 
 export default ContentDetails;

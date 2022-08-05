@@ -82,12 +82,7 @@ export const tmdbApi = createApi({
                     language: LANGUAGE,
                 },
             }),
-            providesTags: (result) => (result
-                ? [
-                    ...result.results.map(({ id }) => ({ type: 'Movies', id } as const)),
-                    { type: 'Movies', id: 'LIST' },
-                ]
-                : [{ type: 'Movies', id: 'LIST' }]),
+            providesTags: ['Movies'],
         }),
         rateContent: build.mutation<IRateResponse, IRateContent>({
             query: ({ value, movieId, category }) => ({
@@ -99,7 +94,7 @@ export const tmdbApi = createApi({
                     guest_session_id: GUEST_SESSION_ID,
                 },
             }),
-            invalidatesTags: [{ type: 'Movies', id: 'LIST' }],
+            invalidatesTags: ['Movies'],
         }),
         removeRatedContent: build.mutation<IRateResponse, IRemoveRated>({
             query: ({ movieId, category }) => ({
@@ -110,10 +105,17 @@ export const tmdbApi = createApi({
                     guest_session_id: GUEST_SESSION_ID,
                 },
             }),
-            invalidatesTags: [{ type: 'Movies', id: 'LIST' }],
+            invalidatesTags: ['Movies'],
         }),
     }),
 });
+
+// todo
+/* After a delete request, sometimes, content card is still displayed,
+but actually it is deleted from the API.
+This can be seen in the Chrome dev tools Network tab,
+and if you reload the page, it will disappear.
+The problem remains if you use asyncThunk */
 
 export const {
     useLazyCreateGuestSessionQuery,
